@@ -1,9 +1,9 @@
 import pkg from "pg";
 const { Pool } = pkg;
+import "dotenv/config";
 
 const pool = new Pool({
-  connectionString:
-    "postgresql://benflockhart:buster@localhost:5432/pokemon_db",
+  connectionString: `${process.env.DB_URL}`,
 });
 
 export default pool;

@@ -48,7 +48,7 @@ async function main() {
   console.log("Seeding...");
   const client = new Client({
     connectionString:
-      "postgresql://benflockhart:buster@localhost:5432/pokemon_db",
+      "postgresql://postgres:qJMiCsoGhaJZCXWvRupCbHHxnsxKkAVW@caboose.proxy.rlwy.net:57391/railway",
   });
   await client.connect();
   await client.query(SQL);
