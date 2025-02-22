@@ -1,0 +1,26 @@
+<% const nameCapital = pokemon_name[0].toUpperCase() + pokemon_name.substring(1); %>
+<% const typeCapital = type[0].toUpperCase() + type.substring(1); %>
+<% const trainerCapital = (trainer) => { return trainer.trainer_name[0].toUpperCase() + trainer.trainer_name.substring(1); } %>
+
+<h1><%= nameCapital %></h1>
+
+<p><strong>Type: </strong> <%= typeCapital %></p>
+<p><strong>Trainer: </strong> <%= trainer ? trainerCapital(trainer) : "No trainer" %></p>
+
+<br>
+<a href="/pokemon/<%= id %>/edit">Edit</a>
+<br>
+ <a href="#" onclick="deletePokemon(event, '<%= id %>')">Delete</a>
+<br>
+<a href="/pokemon">All Pokemon</a>    
+<a href="/">Home</a>
+
+<script>
+    const deletePokemon = async (event, itemId) => {
+        event.preventDefault();
+        await fetch(`/pokemon/${itemId}/delete`, {
+            method: "DELETE",
+        })
+        location.href = "/pokemon";
+    }
+</script>

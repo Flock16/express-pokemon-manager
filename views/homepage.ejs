@@ -1,0 +1,28 @@
+<% const toCapital = (name) => { 
+    return name[0].toUpperCase() + name.substring(1); 
+}%>
+
+<h1>Pokemon Inventory</h1>
+
+<h2>Types</h2>
+<h4><a href="/category/new">Add Type</a></h4>
+<ul>
+    
+<% types.forEach(type => { %>
+    <li>
+        <p><a href="/category/<%= type.id %>"><%= toCapital(type.type_name) %></a></p>
+    </li>
+<%}); %>
+</ul>
+<h2>Trainers</h2>
+<h4><a href="/trainer/new">Add Trainer</a></h4>
+<ul>
+<% trainers.forEach(trainer => { %>
+    <li>
+        <p><a href="/trainer/<%= trainer.id %>"><%= toCapital(trainer.trainer_name) %></a></p>
+    </li>
+<% }) %>
+</ul>
+
+<br>
+<p><a href="/pokemon">View all Pokemon</a></p>

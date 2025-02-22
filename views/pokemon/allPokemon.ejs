@@ -1,0 +1,15 @@
+<% const toCapital = (name) => { 
+    return name[0].toUpperCase() + name.substring(1); 
+}%>
+ 
+
+<h1>All Pokemon</h1>
+<h4><a href="/pokemon/new">Add Pokemon</a></h4>
+
+<% pokemon.forEach((p) => { %>
+    <p><a href="/pokemon/<%= p.id %>"><%= toCapital(p.pokemon_name) %></a></p>
+<% }); %>
+
+<br>
+<br>
+<p><a href="/">Back</a></p>

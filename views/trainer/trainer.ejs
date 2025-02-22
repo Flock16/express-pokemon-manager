@@ -1,0 +1,30 @@
+<% const toCapital = (name) => { 
+    return name[0].toUpperCase() + name.substring(1); 
+}%>
+
+<h1><%= toCapital(trainer.trainer_name)%>'s Pokemon</h1>
+
+<ul>
+<% pokemon.forEach((p) => { %>
+    <li>
+        <p><a href="/pokemon/<%= p.id %>"><%= toCapital(p.pokemon_name) %></a></p>
+    </li>
+<% }); %>
+</ul>
+<br>
+<a href="/trainer/<%= trainer.id %>/edit">Edit Trainer</a>
+<br>
+<a href="#" onclick="deleteTrainer(event, '<%= trainer.id %>')">Delete Trainer</a>
+<br>
+<br>
+<a href="/">Back</a>
+
+<script>
+    const deleteTrainer = async (event, itemId) => {
+        event.preventDefault();
+        await fetch(`/trainer/${itemId}/delete`, {
+            method: "DELETE",
+        })
+        location.href = "/";
+    }
+</script>

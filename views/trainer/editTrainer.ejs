@@ -1,0 +1,11 @@
+<% const toCapital = (name) => { 
+    return name[0].toUpperCase() + name.substring(1); 
+}%>
+
+
+<h1>Edit Trainer</h1>
+<form action="/trainer/<%= trainerId %>/edit?_method=PUT" method="POST">
+    <label for="trainerName">Name:</label>
+    <input value="<%= toCapital(trainer) %>" type="text" name="trainerName" id="trainerName" required minlength="1">
+    <button>Update</button>
+</form>

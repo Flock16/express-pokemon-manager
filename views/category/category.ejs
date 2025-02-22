@@ -1,0 +1,28 @@
+<% const toCapital = (name) => { 
+    return name[0].toUpperCase() + name.substring(1); 
+}%>
+
+<h1><%= toCapital(type.type_name)%> Pokemon</h1>
+
+<ul>
+<% results.forEach((pokemon) => { %>
+    <li>
+        <p><a href="/pokemon/<%= pokemon.id %>"><%= toCapital(pokemon.pokemon_name) %></a></p>
+    </li>
+<% }); %>
+</ul>
+
+<br>
+<a href="#" class="delete-btn" onclick="deleteType(event, '<%= type.id %>')">Delete Type</a>
+<br>
+<a href="/">Back</a>
+
+<script>
+    const deleteType = async (event, id) => {
+        event.preventDefault();
+        await fetch(`/category/${id}/delete`, {
+            method: "DELETE"
+        })
+        location.href = ("/")
+    }    
+</script>
